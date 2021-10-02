@@ -188,3 +188,23 @@ FROM current_emp AS ce
         ON (ce.emp_no = de.emp_no)
     INNER JOIN departments AS d
         ON (de.dept_no = d.dept_no);
+
+--Sales Department retirement employees
+SELECT ri.emp_no,
+ri.first_name,
+ri.last_name,
+di.dept_name
+FROM retirement_info AS ri
+LEFT JOIN dept_info AS di
+ON ri.emp_no = di.emp_no
+WHERE (di.dept_name = 'Sales');
+
+--Sales AND Development reitirement employees
+SELECT ri.emp_no,
+ri.first_name,
+ri.last_name,
+di.dept_name
+FROM retirement_info AS ri
+LEFT JOIN dept_info AS di
+ON ri.emp_no=  di.emp_no
+WHERE di.dept_name IN ('Development', 'Sales');
