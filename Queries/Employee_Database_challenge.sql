@@ -53,3 +53,18 @@ AND (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 ORDER BY emp_no;
 
 SELECT * FROM mentorship_eligibility;
+
+-- DELIVERABLE 3
+-- Total number of retiring employees
+SELECT SUM(count)
+FROM retiring_titles;
+
+-- Total number of employees by title eligible to mentor
+SELECT COUNT(title), title
+INTO mentorship_by_titles
+FROM mentorship_eligibility
+GROUP BY title
+ORDER BY COUNT(title) DESC;
+
+SELECT * FROM mentorship_by_titles;
+
